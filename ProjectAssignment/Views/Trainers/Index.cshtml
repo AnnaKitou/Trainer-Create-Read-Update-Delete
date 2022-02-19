@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectAssignment.Models.Trainer>
+
+@{
+    ViewBag.Title = "Trainer's List";
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
+
+}
+
+<h2>List of Trainers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table style="margin:0 auto" class="table table-hover" id="example">
+    <thead>
+        <tr>
+            <th> First Name</th>
+            <th> Last Name</th>
+            <th> Age </th>
+            <th> Subject </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var trainer in Model)
+        {
+            <tr>
+                <td>@trainer.FirstName</td>
+                <td>@trainer.LastName</td>
+                <td>@trainer.Age</td>
+                <td>@trainer.Subject</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = trainer.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = trainer.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = trainer.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section Mitsos{
+    <script>
+        $(document).ready(function () {
+            $('#example').dataTable({
+                paging: true,
+                stateSave: true,
+                stateSaveCallback: function (settings, data) {
+                    localStorage.setItem('DataTables_' + settings.sInstance, JSON.stringify(data))
+                },
+                stateLoadCallback: function (settings) {
+                    return JSON.parse(localStorage.getItem('DataTables_' + settings.sInstance))
+                }
+            });
+        });
+    </script>
+} 

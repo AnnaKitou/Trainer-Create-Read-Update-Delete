@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+</head>
+<body style="padding:0 20px">
+    @*Header*@
+    <header style="height: 50px; background-color: #222; margin-left:-20px;margin-right:-20px;display:flex;align-items:center;justify-content:center">
+        <div style="margin:0 auto; padding:0 15px;max-width:1170px;width:100%">
+            <div>
+                <a href="/" class="navbar-brand" style="color: #9d9d9d;">Kitou-School</a>
+                <a href="/Trainers" class="navbar-brand" style="color: #9d9d9d; font-size:14px">List of Trainers</a>
+                <a href="/Home/About" class="navbar-brand" style="color: #9d9d9d; font-size: 14px">About</a>
+                <a href="/Home/Contact" class="navbar-brand" style="color: #9d9d9d; font-size: 14px">Contact</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div style="max-width:800px; margin:0 auto 100px;">
+        @RenderBody()
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+    @RenderSection("mitsos", required: false)
+    @RenderSection("scripts", required: false)
+</body>
+</html>
